@@ -1,0 +1,22 @@
+# Use Ubuntu 22.04 as the base image
+FROM ubuntu:22.04
+
+# Install necessary dependencies: curl for downloading Ollama and scripts
+RUN apt-get update && \
+    apt-get install -y curl && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install Ollama using the official installation script
+RUN curl -fsSL https://ollama.com/install.sh | sh
+
+# Create a directory for scripts
+RUN mkdir -p /scripts
+
+# Copy the pull-models.sh script into the container
+COPY pull-models.sh /scripts/pull-models.sh
+
+# Make the script executable
+RUN chmod +x /scripts/pull-models.sh
+
+# Set the entrypoint to execute the script
+ENTRYPOINT ["/scripts/pull-models.sh"]
