@@ -7,7 +7,12 @@ ollama serve &
 OLLAMA_PID=$!
 
 # Wait for Ollama to start (adjust sleep time if needed)
-sleep 5
+echo "Waiting for Ollama to initialize..."
+sleep 10
+
+# Debug: Print the contents of the script to verify it's correct
+echo "Contents of pull-models.sh:"
+cat /scripts/pull-models.sh
 
 # Check if Ollama is running by listing models (this will also validate installation)
 echo "Validating Ollama installation..."
@@ -21,7 +26,7 @@ fi
 
 # Pull the desired models (customize this list as needed)
 echo "Pulling models..."
-ollama pull gemma3:270m
+ollama pull gemma3:1b
 
 echo "✅ All specified models pulled successfully."
 
