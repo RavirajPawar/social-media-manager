@@ -5,7 +5,7 @@ dos2unix pull-models.sh
 docker compose down && docker compose up --build
 
 # fix ModuleNotFoundError: No module named 'some_module' by adding current directory to PYTHONPATH
-export PYTHONPTH=$PWD
+export PYTHONPATH=$PWD
 
 # activate virtual environment in windows
-source venv/Scripts/activate
+source .venv/Scripts/activate

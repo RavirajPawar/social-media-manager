@@ -19,19 +19,19 @@ services:
       retries: 10
       start_period: 60s # Give it time to download the model
 
-  social-media-backend:
-    build:
-      context: .
-      dockerfile: Dockerfile.backend
-    container_name: social-media-backend
-    env_file:
-      - .env
-    ports:
-      - "8000:8000"
-    depends_on:
-      llm-engine:
-        condition: service_healthy
-    restart: unless-stopped
+  # social-media-backend:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.backend
+  #   container_name: social-media-backend
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     llm-engine:
+  #       condition: service_healthy
+  #   restart: unless-stopped
 
 volumes:
   ollama_data:
